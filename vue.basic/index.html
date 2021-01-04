@@ -1,0 +1,40 @@
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>初めてのVue.js</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div id="app" class='container'>
+            
+            <h1>
+                <button @click="purge">Purge</button>
+                My Todolist
+                <span class="info">({{remaining.length}}/{{todos.length}})</span>
+            </h1>
+            <ul>
+                <li v-for="(todo,index) in todos">
+                    <input type="checkbox" v-model="todo.isDone">
+                    <span v-bind:class="{done:todo.isDone}">
+                        {{todo.title}}
+                    </span>
+                <span @click="deleteItem(index)" class="command">[x]</span>
+                </li>
+                <li v-show="!todos.length">Nothing to do yet.</li>
+            </ul>
+            <form @submit.prevent="addItem">
+                <input type="text"　v-model="newItem">
+                <input type="submit" value="Add">
+            </form>
+
+
+        <h3 class> Your done tasks "{{done()}}"</h3>
+        </div>
+        
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="vue.js"></script>
+    </body>
+    </html>
